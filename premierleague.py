@@ -158,6 +158,18 @@ def scrap_match_page(url):
     return match_data
 
 
+def scrap_upcoming_fixures():
+    url = "https://www.premierleague.com/"
+
+    chrome_driver = webdriver.Chrome("C:\\Users\\pcost\\chromedriver_win32\\chromedriver.exe")
+    delay = 3  # delay to load page
+    chrome_driver.get(url)
+
+    soup = bs4.BeautifulSoup(chrome_driver.page_source, "html.parser")
+    chrome_driver.close()
+    return ["https://www.premierleague.com" + a["href"] for a in soup.find("ul", class_="matchWeekFixtureListContainer matchList").find_all("a")]
+
+
 def create_wb(seasons):
 
     wb = openpyxl.Workbook()

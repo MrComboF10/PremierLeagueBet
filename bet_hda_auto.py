@@ -3,9 +3,9 @@ import numpy as np
 import gameoverallscraper
 
 rede = "PP16_money"
-odds = [1.49, 4.32, 5.95]
-bankroll = 47.78
-link = "https://www.premierleague.com/match/58906"
+odds = [3.27, 3.22, 2.20]
+bankroll = 35.94
+link = "https://www.premierleague.com/match/58918"
 
 data = gameoverallscraper.scrap_game_vector(link)
 

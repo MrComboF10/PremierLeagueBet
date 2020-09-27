@@ -2,18 +2,15 @@ from neural_net import NN
 import numpy as np
 import gameoverallscraper
 
-rede = "models_hda/PO11_money"
-odds = [5.65, 4.33, 1.56]
-bankroll = 51.93
-link = "https://www.premierleague.com/match/58903"
+rede = "PO07_money"
+odds = [1.62, 1.82]  # [abaixo 2.5, acima 2.5]
+bankroll = 31.49
+link = "https://www.premierleague.com/match/58918"
 
 data = gameoverallscraper.scrap_game_vector(link)
-        
-odds = [5.65, 4.33, 1.56]
-bankroll = 51.93
 
 bet_amount = 0.00
-RESULT_NAMES = ["Over 2.5", "Under 2.5"]
+RESULT_NAMES = ["Under 2.5", "Over 2.5"]
 
 def find_value(probs, odds):
         value = []

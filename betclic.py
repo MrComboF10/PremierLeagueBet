@@ -18,16 +18,22 @@ def register(username, password):
     chrome_drive.get(betclic_login_url)
     try:
         myElem = WebDriverWait(chrome_drive, delay).until(
-            EC.presence_of_element_located((By.CLASS_NAME, 'forms_inputText')))
+            EC.presence_of_element_located((By.ID, 'loginPage_username')))
+        myElem = WebDriverWait(chrome_drive, delay).until(
+            EC.presence_of_element_located((By.ID, 'loginpage_password')))
         print("Page is ready!")
     except TimeoutException:
         print("Loading page took too much time!")
-    # elements = chrome_drive.find_elements_by_tag_name("input")
-    username_input, password_input = chrome_drive.find_elements_by_class_name("forms_inputText")
-    print(username_input.text)
-    print(password_input.text)
-    # username_input.send_keys(username)
-    # password_input.send_keys(password)
+
+    username_input = chrome_drive.find_element_by_id("loginPage_username").find_element_by_class_name("forms_inputText")
+    password_input = chrome_drive.find_element_by_id("loginpage_password").find_element_by_class_name("forms_inputPassword")
+    button = chrome_drive.find_element_by_tag_name("button")
+
+    chrome_drive.implicitly_wait(10)
+
+    username_input.send_keys(username)
+    password_input.send_keys(password)
+    button.click()
 
 
 def close():
@@ -36,4 +42,4 @@ def close():
 
 start()
 register("MrComboF10", "abcd")
-close()
+# close()
